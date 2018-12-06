@@ -187,6 +187,19 @@ struct scmp_arg_cmp {
 #define SCMP_ARCH_S390X		AUDIT_ARCH_S390X
 
 /**
+ * The RISC-V architecture tokens
+ */
+#ifndef EM_RISCV
+#define EM_RISCV		243
+#endif /* EM_RISCV */
+
+#ifndef AUDIT_ARCH_RISCV64
+#define AUDIT_ARCH_RISCV64	(EM_RISCV|__AUDIT_ARCH_64BIT|__AUDIT_ARCH_LE)
+#endif /* AUDIT_ARCH_RISCV64 */
+
+#define SCMP_ARCH_RISCV64	AUDIT_ARCH_RISCV64
+
+/**
  * The PA-RISC hppa architecture tokens
  */
 #define SCMP_ARCH_PARISC	AUDIT_ARCH_PARISC
@@ -1690,7 +1703,43 @@ int seccomp_export_bpf(const scmp_filter_ctx ctx, int fd);
 #define __NR_subpage_prot	__PNR_subpage_prot
 #endif /* __NR_subpage_prot */
 
+#define __PNR_riscv_flush_icache	-10207
+#ifndef __NR_riscv_flush_icache
+#define __NR_riscv_flush_icache		__PNR_riscv_flush_icache
+#endif /* __NR_riscv_flush_icache */
+
+#define __PNR_preadv2		-10208
+#ifndef __NR_preadv2
+#define __NR_preadv2		__PNR_preadv2
+#endif /* __NR_preadv2 */
+
+#define __PNR_pwritev2		-10209
+#ifndef __NR_pwritev2
+#define __NR_pwritev2		__PNR_pwritev2
+#endif /* __NR_pwritev2 */
+
+#define __PNR_renameat		-10210
+#ifndef __NR_renameat
+#define __NR_renameat		__PNR_renameat
+#endif /* __NR_renameat */
+
+#define __PNR_renameat2		-10211
+#ifndef __NR_renameat2
+#define __NR_renameat2		__PNR_renameat2
+#endif /* __NR_renameat2 */
+
+#define __PNR_io_pgetevents	-10212
+#ifndef __NR_io_pgetevents
+#define __NR_io_pgetevents	__PNR_io_pgetevents
+#endif /* __NR_io_pgetevents */
+
+#define __PNR_rseq		-10213
+#ifndef __NR_rseq
+#define __NR_rseq		__PNR_rseq
+#endif /* __NR_rseq */
+
 #ifdef __cplusplus
+
 }
 #endif
 
